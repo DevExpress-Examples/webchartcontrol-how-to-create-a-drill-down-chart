@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraCharts;
+﻿using DevExpress.Drawing;
+using DevExpress.Utils;
+using DevExpress.XtraCharts;
 using DrillDownChart.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,12 @@ namespace DrillDownChart {
                 diagram.AxisX.Label.Font = new Font(diagram.AxisX.Label.Font, FontStyle.Underline);
             }
             WebChartControl1.DataBind();
+
+            var breadcrumbs = WebChartControl1.Breadcrumbs;
+            breadcrumbs.Border.Color = Color.LightGray;
+            breadcrumbs.Border.Visibility = DefaultBoolean.True;
+            breadcrumbs.DXFont = new DXFont("Tahoma", 12.0F, DXFontStyle.Bold);
+            breadcrumbs.HomeText = "Home";
         }
         protected void WebChartControl1_BoundDataChanged(object sender, EventArgs e) {
             XYDiagram diagram = WebChartControl1.Diagram as XYDiagram;
